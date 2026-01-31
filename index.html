@@ -5,29 +5,29 @@
   <title>Flying Chess – Information</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- TikTok Pixel Code Start -->
-<script>
-!function (w, d, t) {
-  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+  <!-- TikTok Pixel Code Start -->
+  <script>
+  !function (w, d, t) {
+    w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+  var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+  ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
 
+    ttq.load('D5UNF8JC77U581RV3MT0');
+    ttq.page();
+  }(window, document, 'ttq');
+  </script>
+  <!-- TikTok Pixel Code End -->
 
-  ttq.load('D5UNF8JC77U581RV3MT0');
-  ttq.page();
-}(window, document, 'ttq');
-</script>
-<!-- TikTok Pixel Code End -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K1Q55PS2M1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K1Q55PS2M1');
+  </script>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-K1Q55PS2M1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-K1Q55PS2M1');
-</script>
 <body style="font-family:Arial; background:#f7f9fc; text-align:center; padding:40px">
 
   <h1>Flying Chess</h1>
@@ -49,9 +49,48 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
      style="display:inline-block;padding:14px 28px;
      background:#0a71c1;color:#fff;text-decoration:none;
      border-radius:8px;font-size:18px"
-     onclick="ttq.track('ClickButton')">
+     onclick="ttq.track('ClickButton'); sendTikTokDownloadEvent();">
      Continue
   </a>
+
+  <!-- TikTok Events API (same as your curl, JS version) -->
+  <script>
+    function sendTikTokDownloadEvent() {
+      fetch('https://business-api.tiktok.com/open_api/v1.3/event/track/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Token': '5f896f2f86e775cdcec9b1a2beac8ca7d5a734e6'
+        },
+        body: JSON.stringify({
+          event_source: "web",
+          event_source_id: "D5UNF8JC77U581RV3MT0",
+          data: [
+            {
+              event: "Download",
+              event_time: Math.floor(Date.now() / 1000),
+              user: {
+                email: "09d6023dbd7973fa175c6e157ba7a897c3b5da536bb9b13bc363b2bc98c1b946",
+                phone: null,
+                external_id: null
+              },
+              properties: {
+                currency: null,
+                content_type: null
+              },
+              page: {
+                url: window.location.href,
+                referrer: document.referrer
+              }
+            }
+          ]
+        })
+      })
+      .then(res => res.json())
+      .then(data => console.log('TikTok Event Sent:', data))
+      .catch(err => console.error('TikTok Event Error:', err));
+    }
+  </script>
 
 </body>
 </html>
